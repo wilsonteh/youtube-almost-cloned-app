@@ -1,8 +1,11 @@
+import NavBar from "./components/NavBar";
 
 const App = () => {
 
   return (
-    <div className="App bg-red-500">
+    <div className="App">
+      <NavBar />
+
       Hello
     </div>
   )
