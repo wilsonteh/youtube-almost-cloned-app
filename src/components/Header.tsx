@@ -3,13 +3,17 @@ import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faBars, faMagnifyingGlass, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 
+type HeaderProps = {
+  handleHamburgerBtn: any 
+}
 
-const NavBar = () => {
+const Header = ({ handleHamburgerBtn }: HeaderProps) => {
   return (
-    <header className="bg-white flex py-3 px-2 sm:px-6">
+    <header className="bg-white flex py-3 px-2 sm:px-6" >
 
       <div className="left-col w-[180px] flex-auto flex justify-start items-center border-teal-500">
-        <button className="text-black cursor-pointer w-[42px] h-[42px] rounded-full hover:bg-gray-main">
+        <button className="text-black cursor-pointer w-[42px] h-[42px] rounded-full hover:bg-gray-main"
+          onClick={handleHamburgerBtn}>
           <FontAwesomeIcon icon={faBars} size="xl" />
         </button>
 
@@ -39,7 +43,7 @@ const NavBar = () => {
           <FontAwesomeIcon icon={faEllipsisVertical} size="lg" />
         </button>
 
-        <button className="text-blue-main border-[1px] border-gray-main rounded-full px-3 py-1 hover:bg-blue-light hover:border-blue-light">
+        <button className="primary-btn">
           <FontAwesomeIcon icon={faCircleUser} size="lg" className="" />
           <span className="ml-2 hidden xs:inline">Sign in</span>
         </button>
@@ -49,4 +53,4 @@ const NavBar = () => {
   );
 }
  
-export default NavBar;
+export default Header;

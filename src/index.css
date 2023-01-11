@@ -8,6 +8,49 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-*  {
+* {
   box-sizing: border-box;
+}
+
+#menu-bar::-webkit-scrollbar {
+  width: 8px;
+  background: transparent;
+}
+
+#menu-bar::-webkit-scrollbar-thumb {
+  background: hsl(0,0%,60%);
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+@layer components {
+  .primary-btn {
+    @apply text-blue-main border-[1px] border-gray-main rounded-full px-3 py-1 hover:bg-blue-light hover:border-blue-light;
+  }
+
+  .menu-item-container {
+    @apply flex flex-col px-3 py-2;
+  }
+
+  .menu-item {
+    @apply flex flex-col items-center justify-center p-2 text-center rounded-xl md:flex-row md:justify-start md:items-center hover:bg-gray-main;
+  }
+
+  /* for mini menubar in >= md screen */
+  .mini-menu-item {
+    @apply flex-col items-center justify-center;
+  }
+  
+  .menu-item-icon {
+    @apply w-[24px] h-[24px] flex justify-center items-center;
+  }
+
+  /* for menubar in < sm screen */
+  .mobile-menu {
+    @apply bg-white block absolute left-0 right-0 border-gray-dark shadow-[inset_1px_2px_8px_rgb(0,0,0,.3)];
+  }
+  
 }
