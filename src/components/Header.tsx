@@ -12,14 +12,16 @@ const Header = ({ handleHamburgerBtn }: HeaderProps) => {
     <header className="bg-white flex py-3 px-2 sm:px-6" >
 
       <div className="left-col w-[180px] flex-auto flex justify-start items-center border-teal-500">
-        <button className="text-black cursor-pointer w-[42px] h-[42px] rounded-full hover:bg-gray-main"
+        <button className="text-black cursor-pointer w-[42px] h-[42px] rounded-full hover:bg-gray-main block md:hidden"
           onClick={handleHamburgerBtn}>
           <FontAwesomeIcon icon={faBars} size="xl" />
         </button>
 
-        <a href="/" className="flex justify-center items-center md:ml-6">
+        <a href="/" className="flex justify-center items-center ml-2 md:ml-0">
           <FontAwesomeIcon icon={faYoutube} size="2x" className="text-red-main" /> 
-          <span className="text-gray-900  font-semibold font-robotoC ml-1 text-xl">YouTube</span>
+          <span className="text-gray-900  font-semibold font-robotoC text-xl ml-1">
+            YouTube
+          </span>
         </a>
       </div>
 

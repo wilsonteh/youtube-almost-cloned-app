@@ -1,26 +1,32 @@
 import MenuBar from "./components/MenuBar";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
+import MainContent from "./components/MainContent";
 
 const App = () => {
-
-  const [windowWidth, setWindowWidth] = useState(0);
+  
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [showMenuBar, setShowMenuBar] = useState(false);
   const [isMiniMenu, setIsMiniMenu] = useState(false);
   
   const handleHamburgerBtn = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     
-    setIsMiniMenu(!isMiniMenu)
-    
     // oni able to toggle this if < sm screen
-    if (windowWidth < 576) {
-      console.log("toggled menubar");
+    if (windowWidth < 768) {
+      console.log("toggled mobile menubar");
       setShowMenuBar(!showMenuBar)
-    }
+    } 
   }
-  
+
   useEffect(() => {
-    setWindowWidth(window.innerWidth)
+
+    window.addEventListener("resize", () => setWindowWidth(window.innerWidth));
+
+    if (windowWidth < 992) {
+      setIsMiniMenu(true)
+    } else {
+      setIsMiniMenu(false)
+    }
 
   }, [windowWidth, showMenuBar, isMiniMenu])
 
@@ -28,13 +34,13 @@ const App = () => {
     <div className="App">
       <Header handleHamburgerBtn={handleHamburgerBtn} />
       <div className="flex">
-        <section className={`sm:block ${isMiniMenu ? 'flex-[0.5]' : 'flex-[1]'}
+        <section className={`md:block ${isMiniMenu ? 'flex-[.5]' : 'flex-[.9]'}
           ${showMenuBar ? 'mobile-menu' : 'hidden top-100%'}`}>
           <MenuBar isMiniMenu={isMiniMenu} showMenuBar={showMenuBar} />
         </section>
 
-        <section className={`border-2 border-blue-500 flex-[5.5]`}>
-          main content
+        <section className={`border-blue-500 flex-[5.5]`}>
+          <MainContent />
         </section>
 
       </div>
