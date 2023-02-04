@@ -8,7 +8,7 @@ type MenuBarProps = {
 }
 
 const MenuBar = ({ isMiniMenu, showMenuBar }: MenuBarProps) => {
-
+  
   return (
     <nav id="menu-bar" className={`flex flex-col sticky top-0 h-[90vh] overflow-y-auto invisible hover:visible focus:visible`} >
       <div className="visible">

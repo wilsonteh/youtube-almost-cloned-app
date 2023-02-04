@@ -34,7 +34,6 @@ const VideoCard = ({ videoData }) => {
 
   }, [])
   
-  
 
   return (
     <a className="flex flex-col">
@@ -70,10 +69,9 @@ const VideoCard = ({ videoData }) => {
             {videoCardData.viewCount} views • {videoCardData.published}
           </div>
         </div>
-
       </div>
-
     </a>
+
   );
 }
  
