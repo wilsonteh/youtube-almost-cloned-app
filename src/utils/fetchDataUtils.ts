@@ -15,8 +15,18 @@ const youtube138Options = {
 	}
 };
 
-// fetch a video info by videoId
+// fetch a video detail by videoId
 export const fetchVideoDetail = async (videoId: any) => {
-  const video = await fetch(`https://youtube138.p.rapidapi.com/video/details/?id=${videoId}`, youtube138Options)
-  return video;
+
+	const [videoRes, commentsRes] = await Promise.all([
+		// fetch video detail & fetch video comments
+		fetch(`https://youtube138.p.rapidapi.com/video/details/?id=${videoId}`, youtube138Options),
+		fetch(`https://youtube138.p.rapidapi.com/video/comments/?id=${videoId}`, youtube138Options)
+	]);
+
+	const [video, comments] = await Promise.all([videoRes.json(), commentsRes.json()]);
+
+	return {
+		video, comments
+	};
 }

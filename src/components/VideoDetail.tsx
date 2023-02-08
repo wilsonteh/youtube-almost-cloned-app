@@ -1,13 +1,19 @@
 import { useLoaderData, useParams } from "react-router-dom";
+import { displayDecimalNum } from "../utils/Utils";
+import Comments from "./Comments";
+
 
 const VideoDetail = () => {
 
   const { videoId } = useParams();
-  const video: any = useLoaderData();
+  const videoData: any = useLoaderData();
+  const { video, comments } = videoData;
+  console.log("🚀 ~ file: VideoDetail.tsx:8 ~ VideoDetail ~ video", video)
 
   return (
     <div className="grid grid-cols-[2fr_1fr]">
       {/* <div>Video ID: {videoId}</div>       */}
+
       <section className="border-red-500 p-6 pb-[56.25%] mx-0 my-auto">
 
         <div className="video-player relative pb-[56.25%] h-0">
@@ -22,7 +28,7 @@ const VideoDetail = () => {
         <div className="flex flex-col">
           <div className="flex gap-[2px] text-xs text-blue-main mt-2">
             { video.superTitle.items.map((superTitle: string, i: number) => ( 
-              <span> { superTitle } </span> 
+              <span key={i}> { superTitle } </span> 
             ))}
           </div>
 
@@ -40,7 +46,9 @@ const VideoDetail = () => {
 
               <div className="flex flex-col ml-2 pr-8">
                 <div className="font-medium"> {video.author.title } </div>
-                <div className="text-xs text-[hsl(0,0%,38%)]">100K susbcribers</div>
+                <div className="text-xs text-[hsl(0,0%,38%)]">
+                  { video.author.stats.subscribersText }
+                </div>
               </div>
 
               <button className="secondary-btn">
@@ -50,14 +58,14 @@ const VideoDetail = () => {
 
             {/* <div className="info-right flex-1 justify-end flex bg-red-400">
               Info right
-            </div> */}
+            </div>  */}
           </div>
           
           <hr />
 
           <div className="video-descr bg-gray-light rounded-md text-sm p-3 mt-3">
             <div className="font-medium">
-              <span> {video.stats.views} views</span>
+              <span> { displayDecimalNum(video.stats.views) } views</span>
               &nbsp;
               <span> {video.publishDate} </span>
             </div>
@@ -70,7 +78,7 @@ const VideoDetail = () => {
         <div className="comment-section">
           <div> { video.stats.comments } comments </div>
           
-          all comments
+          <Comments comments={comments} />
 
         </div>
 
