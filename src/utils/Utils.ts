@@ -27,3 +27,7 @@ export const displayDecimalNum = (num: string) => {
 
   return number.toFixed(unitIndex ? 1 : 0) + units[unitIndex];
 }
+
+export const addCommaSeparator = (num: string) => {
+  return num.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

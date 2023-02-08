@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { displayDecimalNum } from "../utils/Utils";
 
-const VideoCard = ({ videoData }) => {
+const VideoCard = ({ videoData }: any) => {
 
   const [videoCardData, setVideoCardData] = useState({
     videoId: "", 
@@ -59,14 +60,14 @@ const VideoCard = ({ videoData }) => {
         <div className="flex flex-col px-3 w-full">
           <a href={`video/${videoCardData.videoId}`} 
             className="font-medium text-sm line-clamp-2"> 
-            {videoCardData.videoTitle}
+            { videoCardData.videoTitle }
           </a>
           <a href={`channel/${videoCardData.channelId}`} 
             className="mt-2 text-xs text-[hsl(0,0%,38%)] w-fit"> 
-            {videoCardData.channelTitle} 
+            { videoCardData.channelTitle } 
           </a>
           <div className="text-xs text-[hsl(0,0%,38%)]">
-            {videoCardData.viewCount} views • {videoCardData.published}
+            { displayDecimalNum(String(videoCardData.viewCount)) } views • {videoCardData.published}
           </div>
         </div>
       </div>

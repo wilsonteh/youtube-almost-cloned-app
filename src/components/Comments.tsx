@@ -7,7 +7,6 @@ import { displayWholeNum } from "../utils/Utils";
 const Comments = ({ comments: data } : any) => {
   
   const { comments } = data
-  console.log("🚀 ~ file: Comments.tsx:5 ~ Comments ~ comments", comments)
 
   return (
     <div className="flex flex-col gap-5 py-4">

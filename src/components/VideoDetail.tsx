@@ -1,5 +1,7 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLoaderData, useParams } from "react-router-dom";
-import { displayDecimalNum } from "../utils/Utils";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
+import { addCommaSeparator, displayDecimalNum, displayWholeNum } from "../utils/Utils";
 import Comments from "./Comments";
 
 
@@ -36,7 +38,7 @@ const VideoDetail = () => {
             { video.title }
           </h3>
 
-          <div className="video-info flex justify-between py-2">
+          <div className="video-info flex justify-between items-center py-2">
             <div className="info-left flex-1 justify-start flex ">
               <div className="w-[40px] h-[40px]">
                 <img className="rounded-full" 
@@ -56,9 +58,28 @@ const VideoDetail = () => {
               </button>  
             </div>
 
-            {/* <div className="info-right flex-1 justify-end flex bg-red-400">
-              Info right
-            </div>  */}
+            <div className="info-right flex-1 justify-end flex border-red-600">
+
+              <div className="bg-gray-main flex items-center rounded-full">
+                <div className="flex gap-2 rounded-l-full cursor-pointer px-3 py-1 
+                  hover:bg-[hsl(0,0%,88%)]">
+                  <span>
+                    <FontAwesomeIcon icon={faThumbsUp} className="text-lg" />
+                  </span>
+                  <span className=""> { displayWholeNum(video.stats.likes) } </span>
+                </div>
+
+                <div className="h-2/3 w-[1px] bg-gray-dark rounded-full"></div>
+
+                <div className="flex rounded-r-full cursor-pointer pl-3 pr-4 py-1 
+                  hover:bg-[hsl(0,0%,88%)]">
+                  <span className="">
+                    <FontAwesomeIcon icon={faThumbsDown} flip="horizontal" className="text-lg" />
+                  </span>
+                </div>
+              </div>
+              
+            </div> 
           </div>
           
           <hr />
@@ -75,8 +96,8 @@ const VideoDetail = () => {
 
         </div>
         
-        <div className="comment-section">
-          <div> { video.stats.comments } comments </div>
+        <div className="comment-section mt-4">
+          <div> { addCommaSeparator(video.stats.comments.toString()) } comments </div>
           
           <Comments comments={comments} />
 
