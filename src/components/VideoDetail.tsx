@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { addCommaSeparator, displayDecimalNum, displayWholeNum } from "../utils/Utils";
 import Comments from "./Comments";
+import RelatedVideos from "./RelatedVideos";
 
 
 const VideoDetail = () => {
@@ -10,11 +11,9 @@ const VideoDetail = () => {
   const { videoId } = useParams();
   const videoData: any = useLoaderData();
   const { video, comments } = videoData;
-  console.log("🚀 ~ file: VideoDetail.tsx:8 ~ VideoDetail ~ video", video)
 
   return (
     <div className="grid grid-cols-[2fr_1fr]">
-      {/* <div>Video ID: {videoId}</div>       */}
 
       <section className="border-red-500 p-6 pb-[56.25%] mx-0 my-auto">
 
@@ -28,14 +27,14 @@ const VideoDetail = () => {
         </div>
 
         <div className="flex flex-col">
-          <div className="flex gap-[2px] text-xs text-blue-main mt-2">
+          {/* <div className="flex gap-[2px] text-xs text-blue-main mt-2">
             { video.superTitle.items.map((superTitle: string, i: number) => ( 
               <span key={i}> { superTitle } </span> 
             ))}
-          </div>
+          </div> */}
 
           <h3 className="text-lg font-medium">
-            { video.title }
+            { video.snippet.title }
           </h3>
 
           <div className="video-info flex justify-between items-center py-2">
@@ -47,10 +46,10 @@ const VideoDetail = () => {
               </div>
 
               <div className="flex flex-col ml-2 pr-8">
-                <div className="font-medium"> {video.author.title } </div>
-                <div className="text-xs text-[hsl(0,0%,38%)]">
+                <div className="font-medium"> {video.snippet.channelTitle } </div>
+                {/* <div className="text-xs text-[hsl(0,0%,38%)]">
                   { video.author.stats.subscribersText }
-                </div>
+                </div> */}
               </div>
 
               <button className="secondary-btn">
@@ -66,7 +65,7 @@ const VideoDetail = () => {
                   <span>
                     <FontAwesomeIcon icon={faThumbsUp} className="text-lg" />
                   </span>
-                  <span className=""> { displayWholeNum(video.stats.likes) } </span>
+                  <span className=""> { displayWholeNum(video.statistics.likeCount) } </span>
                 </div>
 
                 <div className="h-2/3 w-[1px] bg-gray-dark rounded-full"></div>
@@ -86,28 +85,30 @@ const VideoDetail = () => {
 
           <div className="video-descr bg-gray-light rounded-md text-sm p-3 mt-3">
             <div className="font-medium">
-              <span> { displayDecimalNum(video.stats.views) } views</span>
+              <span> { displayDecimalNum(video.statistics.viewCount) } views</span>
               &nbsp;
-              <span> {video.publishDate} </span>
+              <span> { video.snippet.publishedAt } </span>
             </div>
 
-            <p className="">{ video.description }</p>
+            <p className="">{ video.snippet.description }</p>
           </div>
 
         </div>
         
         <div className="comment-section mt-4">
-          <div> { addCommaSeparator(video.stats.comments.toString()) } comments </div>
+          <div> { addCommaSeparator(video.statistics.commentCount.toString()) } comments </div>
           
-          <Comments comments={comments} />
+          <Comments data={comments} />
 
         </div>
 
       </section>
 
       <section className="video-list border-blue-500">
-        video list
+        {/* <RelatedVideos data={relatedVideos.contents} /> */}
+        related videos
       </section>
+
 
 
     </div>
