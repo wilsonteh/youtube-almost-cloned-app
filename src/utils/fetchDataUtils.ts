@@ -18,22 +18,25 @@ const ytAPIOptions = {
 // fetch a video detail by videoId
 export const fetchVideoDetail = async (videoId: any) => {
 
-	const [videoRes, commentsRes] = await Promise.all([
+	const [videoRes, commentsRes, relatedVideosRes] = await Promise.all([
 
 		fetch(`https://youtube-v31.p.rapidapi.com/videos?part=part&id=${videoId}`, youtubeV3Options),
 		fetch(`https://yt-api.p.rapidapi.com/comments?id=${videoId}&sort_by=top`, ytAPIOptions), 
+		fetch(`https://yt-api.p.rapidapi.com/related?id=${videoId}`, ytAPIOptions), 
 
 	]);
 
-	const [video, comments] = 
+	const [video, comments, relatedVideos] = 
 		await Promise.all([
 			videoRes.json(), 
 			commentsRes.json(), 
+			relatedVideosRes.json()
 		]);
 
 	return {
 		video: video.items[0], 
-		comments: comments.data
+		comments: comments.data,
+		relatedVideos: relatedVideos.data
 	};
 }
 

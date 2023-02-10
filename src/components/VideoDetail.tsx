@@ -10,12 +10,12 @@ const VideoDetail = () => {
 
   const { videoId } = useParams();
   const videoData: any = useLoaderData();
-  const { video, comments } = videoData;
+  const { video, comments, relatedVideos } = videoData;
 
   return (
     <div className="grid grid-cols-[2fr_1fr]">
 
-      <section className="border-red-500 p-6 pb-[56.25%] mx-0 my-auto">
+      <section className="border-red-500 p-6 pb-[56.25%]">
 
         <div className="video-player relative pb-[56.25%] h-0">
           <iframe className="absolute top-0 left-0 w-full h-full" 
@@ -105,8 +105,7 @@ const VideoDetail = () => {
       </section>
 
       <section className="video-list border-blue-500">
-        {/* <RelatedVideos data={relatedVideos.contents} /> */}
-        related videos
+        <RelatedVideos data={relatedVideos} />
       </section>
 
 
