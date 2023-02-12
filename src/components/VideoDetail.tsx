@@ -33,7 +33,7 @@ const VideoDetail = () => {
             ))}
           </div> */}
 
-          <h3 className="text-lg font-medium">
+          <h3 className="text-lg font-medium mt-2">
             { video.snippet.title }
           </h3>
 
@@ -46,7 +46,7 @@ const VideoDetail = () => {
               </div>
 
               <div className="flex flex-col ml-2 pr-8">
-                <div className="font-medium"> {video.snippet.channelTitle } </div>
+                <div className="font-medium"> { video.snippet.channelTitle } </div>
                 {/* <div className="text-xs text-[hsl(0,0%,38%)]">
                   { video.author.stats.subscribersText }
                 </div> */}
@@ -87,7 +87,7 @@ const VideoDetail = () => {
             <div className="font-medium">
               <span> { displayDecimalNum(video.statistics.viewCount) } views</span>
               &nbsp;
-              <span> { video.snippet.publishedAt } </span>
+              {/* <span> { video.snippet.publishedAt } </span> */}
             </div>
 
             <p className="">{ video.snippet.description }</p>

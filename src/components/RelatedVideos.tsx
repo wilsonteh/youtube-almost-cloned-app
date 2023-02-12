@@ -6,7 +6,7 @@ const RelatedVideos = ({ data: relatedVideos }: any) => {
     <div className="flex flex-col gap-2 pt-6 pr-12">
 
       { relatedVideos.map((relatedVid: any) => (
-        <div className="grid grid-cols-[1fr_1.2fr] border-red-400">
+        <div key={relatedVid.videoId} className="grid grid-cols-[1fr_1.2fr] border-red-400">
           <a href={`/video/${relatedVid.videoId}`} className="relative">
             <img className="rounded-md" 
               src={ relatedVid.thumbnail[1].url } alt={ relatedVid.title } />
