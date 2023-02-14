@@ -12,10 +12,10 @@ const App = () => {
       <>
         <Route path="/" element={<Root />} >
           <Route index element={<MainContent />} />
+          <Route path="channel/:channelId" element={<ChannelDetail />} />
           <Route path="video/:videoId" element={<VideoDetail />} 
             loader={({ params }) => fetchVideoDetail(params.videoId) }
             />
-          <Route path="channel/:channelId" element={<ChannelDetail />} />
         </Route>
       </>
 

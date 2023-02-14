@@ -3,9 +3,11 @@ import { displayDecimalNum } from "../utils/Utils";
 const RelatedVideos = ({ data: relatedVideos }: any) => {
 
   return (
-    <div className="flex flex-col gap-2 pt-6 pr-12">
+    <div className="pt-6 pr-12 gap-2 w-full flex flex-col md:w-2/3 lg:w-full lg:grid lg:grid-cols-2 
+      xl:flex xl:flex-col">
 
       { relatedVideos.map((relatedVid: any) => (
+
         <div key={relatedVid.videoId} className="grid grid-cols-[1fr_1.2fr] border-red-400">
           <a href={`/video/${relatedVid.videoId}`} className="relative">
             <img className="rounded-md" 
@@ -30,8 +32,8 @@ const RelatedVideos = ({ data: relatedVideos }: any) => {
               <span> { relatedVid.publishedTimeText } </span>
             </div>
           </div>
-
         </div>
+
       ))}
 
     </div>

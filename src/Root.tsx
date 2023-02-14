@@ -35,7 +35,7 @@ const Root = () => {
           <MenuBar isMiniMenu={isMiniMenu} showMenuBar={showMenuBar} />
         </section>
 
-        <section className={`border-blue-500 flex-[5.5]`}>
+        <section className={`flex-[5.5]`}>
           <Outlet />
         </section>
 

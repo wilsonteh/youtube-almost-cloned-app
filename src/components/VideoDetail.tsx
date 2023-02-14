@@ -13,9 +13,9 @@ const VideoDetail = () => {
   const { video, comments, relatedVideos } = videoData;
 
   return (
-    <div className="grid grid-cols-[2fr_1fr]">
+    <div className="grid grid-cols-none xl:grid-cols-[2fr_1fr]">
 
-      <section className="border-red-500 p-6 pb-[56.25%]">
+      <section className="p-6 pb-0">
 
         <div className="video-player relative pb-[56.25%] h-0">
           <iframe className="absolute top-0 left-0 w-full h-full" 
@@ -104,7 +104,7 @@ const VideoDetail = () => {
 
       </section>
 
-      <section className="video-list border-blue-500">
+      <section className="related-videos p-6 xl:p-0">
         <RelatedVideos data={relatedVideos} />
       </section>
 
