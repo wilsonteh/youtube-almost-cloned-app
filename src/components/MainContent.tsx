@@ -19,7 +19,6 @@ const MainContent = () => {
         .then(res => res.json())
         .then(res => {
           setVideoList(res.data)
-          console.log(res.data)
         })
         .catch(err => console.error(err));
     }

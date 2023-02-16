@@ -37,8 +37,8 @@ const VideoCard = ({ videoData }: any) => {
   
 
   return (
-    <a className="flex flex-col">
-      <div className="relative">
+    <a href={`video/${videoCardData.videoId}`} className="flex flex-col">
+      <div className="relative z-[-10]">
         <a href={`video/${videoCardData.videoId}`}>
           <img className="rounded-xl" src={videoCardData.thumbnailUrl} 
             alt={videoCardData.videoTitle} />

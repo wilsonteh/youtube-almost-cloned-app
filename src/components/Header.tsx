@@ -1,20 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faBars, faMagnifyingGlass, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faXmark, faMagnifyingGlass, faEllipsisVertical } from "@fortawesome/free-solid-svg-icons";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 
 type HeaderProps = {
-  handleHamburgerBtn: any 
+  handleHamburgerBtn: any,
+  menuBarIcon: any
 }
 
-const Header = ({ handleHamburgerBtn }: HeaderProps) => {
+const Header = ({ handleHamburgerBtn, menuBarIcon }: HeaderProps) => {
+
+  
   return (
     <header className="bg-white flex py-3 px-2 sm:px-6" >
 
       <div className="left-col w-[180px] flex-auto flex justify-start items-center border-teal-500">
         <button className="text-black cursor-pointer w-[42px] h-[42px] rounded-full hover:bg-gray-main block md:hidden"
           onClick={handleHamburgerBtn}>
-          <FontAwesomeIcon icon={faBars} size="xl" />
+          <FontAwesomeIcon icon={menuBarIcon === "bars" ? faBars : faXmark} size="xl" />
         </button>
 
         <a href="/" className="flex justify-center items-center ml-2 md:ml-0">

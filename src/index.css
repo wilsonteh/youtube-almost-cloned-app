@@ -2,14 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 #menu-bar::-webkit-scrollbar {
@@ -26,13 +26,19 @@ body {
   -o-border-radius: 20px;
 }
 
+.menubar-expansion {
+  overflow: hidden;
+}
+
 @layer components {
   .primary-btn {
-    @apply text-blue-main border-[1px] border-gray-main rounded-full px-3 py-1 cursor-pointer hover:bg-blue-light hover:border-blue-light;
+    @apply text-blue-main border-[1px] border-gray-main rounded-full px-3 py-1 cursor-pointer 
+    hover:bg-blue-light hover:border-blue-light;
   }
 
   .secondary-btn {
-    @apply bg-black text-gray-light border-[1px] rounded-full px-3 py-1 cursor-pointer hover:opacity-80;
+    @apply bg-black text-gray-light border-[1px] rounded-full px-3 py-1 cursor-pointer 
+    hover:opacity-80;
   }
 
   .menu-item-container {
@@ -40,7 +46,8 @@ body {
   }
 
   .menu-item {
-    @apply flex flex-col items-center justify-center p-2 text-sm text-center rounded-xl md:flex-row md:justify-start md:items-center hover:bg-gray-main;
+    @apply flex flex-col items-center justify-center p-2 text-sm text-center rounded-xl md:flex-row 
+    md:justify-start md:items-center hover:bg-gray-main;
   }
 
   /* for mini menubar in >= md screen */
@@ -52,9 +59,10 @@ body {
     @apply w-[24px] h-[24px] flex justify-center items-center;
   }
 
-  /* for menubar in < sm screen */
+  /* for menubar in < md screen */
   .mobile-menu {
-    @apply bg-white block absolute left-0 right-0 border-gray-dark shadow-[inset_1px_2px_8px_rgb(0,0,0,.3)];
+    @apply bg-white block absolute left-0 right-0 xs:right-[50%] border-gray-dark 
+    shadow-[inset_1px_2px_8px_rgb(0,0,0,.3)];
   }
   
 
