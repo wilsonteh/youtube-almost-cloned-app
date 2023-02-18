@@ -42,11 +42,11 @@ const VideoDetail = () => {
               <div className="w-[40px] h-[40px]">
                 <img className="rounded-full" 
                   src="https://yt3.ggpht.com/ytc/AL5GRJULssAv65kAcbxwOj5eL3mWdRWevKtfm7Ywfz5n=s88-c-k-c0x00ffffff-no-rj" 
-                  alt="" />
+                  alt={`${video.snippet.channelTitle}`} />
               </div>
 
               <div className="flex flex-col ml-2 pr-8">
-                <div className="font-medium"> { video.snippet.channelTitle } </div>
+                <a href={`/channel/${video.snippet.channelId}`} className="font-medium"> { video.snippet.channelTitle } </a>
                 {/* <div className="text-xs text-[hsl(0,0%,38%)]">
                   { video.author.stats.subscribersText }
                 </div> */}

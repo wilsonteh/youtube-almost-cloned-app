@@ -3,7 +3,7 @@ import ChannelDetail from "./components/ChannelDetail";
 import MainContent from "./components/MainContent";
 import VideoDetail from "./components/VideoDetail";
 import Root from "./Root";
-import { fetchVideoDetail } from "./utils/fetchDataUtils";
+import { fetchTrendingVideos, fetchVideoDetail } from "./utils/fetchDataUtils";
 
 const App = () => {
 
@@ -11,8 +11,9 @@ const App = () => {
     createRoutesFromElements(
       <>
         <Route path="/" element={<Root />} >
-          <Route index element={<MainContent />} />
-          <Route path="channel/:channelId" element={<ChannelDetail />} />
+          <Route index element={<MainContent />} loader={fetchTrendingVideos} />
+          <Route path="channel/:channelId" element={<ChannelDetail />}
+            />
           <Route path="video/:videoId" element={<VideoDetail />} 
             loader={({ params }) => fetchVideoDetail(params.videoId) }
             />

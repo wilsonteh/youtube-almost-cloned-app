@@ -15,8 +15,17 @@ const ytAPIOptions = {
 	}
 };
 
+// fetch trending videos for the home page of youtube
+export const fetchTrendingVideos = async () => {
+	const res = await fetch('https://yt-api.p.rapidapi.com/trending?geo=MY', ytAPIOptions);
+	const trendingVideos = await res.json();
+
+	return trendingVideos.data;
+}
+
+
 // fetch a video detail by videoId
-export const fetchVideoDetail = async (videoId: any) => {
+export const fetchVideoDetail = async (videoId: string) => {
 
 	const [videoRes, commentsRes, relatedVideosRes] = await Promise.all([
 
