@@ -4,14 +4,46 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-regular-svg-icons";
 import { addCommaSeparator, displayDecimalNum, displayWholeNum } from "../utils/Utils";
 import Comments from "./Comments";
 import RelatedVideos from "./RelatedVideos";
+import { useEffect, useState } from "react";
 
 
 const VideoDetail = () => {
 
+  const [video, setVideo] = useState({
+    id: "",
+    title: "", 
+    description: "",
+    channelId: "",
+    channelTitle:"",
+    likeCount: 0,
+    viewCount: 0,
+    commentCount: 0,
+  });
+
   const { videoId } = useParams();
   const videoData: any = useLoaderData();
-  const { video, comments, relatedVideos } = videoData;
+  const { video: vid, comments, relatedVideos } = videoData;
 
+  useEffect(() => {
+    setVideo(prev => ({
+      ...prev,
+      id: vid.id,
+      title: vid.snippet.title,
+      description: vid.snippet.description,
+      channelId: vid.snippet.channelId,
+      channelTitle: vid.snippet.channelTitle,
+      likeCount: Number(vid.statistics.likeCount),
+      viewCount: Number(vid.statistics.viewCount),
+      commentCount: Number(vid.statistics.commentCount),
+    }))
+
+  }, [])
+  
+  useEffect(() => {
+    console.log(video);
+    
+  }, [video])
+  
   return (
     <div className="grid grid-cols-none xl:grid-cols-[2fr_1fr]">
 
@@ -34,7 +66,7 @@ const VideoDetail = () => {
           </div> */}
 
           <h3 className="text-lg font-medium mt-2">
-            { video.snippet.title }
+            { video.title }
           </h3>
 
           <div className="video-info flex justify-between items-center py-2">
@@ -42,11 +74,13 @@ const VideoDetail = () => {
               <div className="w-[40px] h-[40px]">
                 <img className="rounded-full" 
                   src="https://yt3.ggpht.com/ytc/AL5GRJULssAv65kAcbxwOj5eL3mWdRWevKtfm7Ywfz5n=s88-c-k-c0x00ffffff-no-rj" 
-                  alt={`${video.snippet.channelTitle}`} />
+                  alt={`${video.channelTitle}`} />
               </div>
 
               <div className="flex flex-col ml-2 pr-8">
-                <a href={`/channel/${video.snippet.channelId}`} className="font-medium"> { video.snippet.channelTitle } </a>
+                <a href={`/channel/${video.channelId}`} className="font-medium"> 
+                  { video.channelTitle } 
+                </a>
                 {/* <div className="text-xs text-[hsl(0,0%,38%)]">
                   { video.author.stats.subscribersText }
                 </div> */}
@@ -65,7 +99,7 @@ const VideoDetail = () => {
                   <span>
                     <FontAwesomeIcon icon={faThumbsUp} className="text-lg" />
                   </span>
-                  <span className=""> { displayWholeNum(video.statistics.likeCount) } </span>
+                  <span className=""> { displayWholeNum(String(video.likeCount)) } </span>
                 </div>
 
                 <div className="h-2/3 w-[1px] bg-gray-dark rounded-full"></div>
@@ -85,18 +119,18 @@ const VideoDetail = () => {
 
           <div className="video-descr bg-gray-light rounded-md text-sm p-3 mt-3">
             <div className="font-medium">
-              <span> { displayDecimalNum(video.statistics.viewCount) } views</span>
+              <span> { displayDecimalNum(String(video.viewCount)) } views</span>
               &nbsp;
-              {/* <span> { video.snippet.publishedAt } </span> */}
             </div>
 
-            <p className="">{ video.snippet.description }</p>
+            <p className="">{ video.description }</p>
           </div>
 
         </div>
         
         <div className="comment-section mt-4">
-          <div> { addCommaSeparator(video.statistics.commentCount.toString()) } comments </div>
+
+          <div> { addCommaSeparator(String(video.commentCount)) } comments </div>
           
           <Comments data={comments} />
 

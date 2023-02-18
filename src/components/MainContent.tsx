@@ -10,7 +10,7 @@ const MainContent = () => {
       gap-y-[48px]">
 
       { trendingVideos?.map(video => (
-        <VideoCard key={video.videoId} videoData={video}/>
+        <VideoCard key={video.videoId} data={video}/>
       ))}
 
     </div>
