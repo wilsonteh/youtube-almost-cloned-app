@@ -2,7 +2,7 @@
 const youtubeV3Options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '11f6926eedmshcb72d26a5c1ed22p145c4cjsn77082c63295d',
+		'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
 		'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
 	}
 };
@@ -10,7 +10,7 @@ const youtubeV3Options = {
 const ytAPIOptions = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '11f6926eedmshcb72d26a5c1ed22p145c4cjsn77082c63295d',
+		'X-RapidAPI-Key': import.meta.env.VITE_RAPID_API_KEY,
 		'X-RapidAPI-Host': 'yt-api.p.rapidapi.com'
 	}
 };
