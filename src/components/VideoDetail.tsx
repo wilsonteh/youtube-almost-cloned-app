@@ -129,11 +129,8 @@ const VideoDetail = () => {
         </div>
         
         <div className="comment-section mt-4">
-
           <div> { addCommaSeparator(String(video.commentCount)) } comments </div>
-          
           <Comments data={comments} />
-
         </div>
 
       </section>

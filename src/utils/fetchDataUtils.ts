@@ -49,3 +49,15 @@ export const fetchVideoDetail = async (videoId: string) => {
 	};
 }
 
+// fetch channel details & videos by channelId
+export const fetchChannelDetail = async (channelId: string, sortBy: string = "newest") => {
+	const res = await fetch(
+		`https://yt-api.p.rapidapi.com/channel?id=${channelId}&sort_by=${sortBy}`, 
+		ytAPIOptions
+	);
+	const channelData = await res.json();
+
+	return channelData;
+
+}
+
